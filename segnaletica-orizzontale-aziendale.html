@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segnaletica Orizzontale Aziendale | GO Segnaletica Bergamo</title>
+  <meta name="description" content="Realizziamo segnaletica orizzontale aziendale per capannoni, magazzini e stabilimenti. Materiali certificati, tempi rapidi, tutta Italia.">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    /* SEZIONI SPECIFICHE */
+    .intro{padding:96px 0}
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+    .intro-text h2{font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:18px;margin-top:8px}
+    .intro-text p{font-size:15px;color:var(--ink-light);line-height:1.8;margin-bottom:14px}
+    .intro-img{border-radius:12px;overflow:hidden;height:500px}
+    .intro-img img{width:100%;height:100%;object-fit:cover}
+
+    .garanzie{padding:0 0 96px;background:var(--white)}
+    .gar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    .gar-card{background:var(--offwhite);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .25s,transform .25s}
+    .gar-card:hover{box-shadow:0 12px 36px rgba(52,97,116,.1);transform:translateY(-4px)}
+    .gar-img{height:200px;overflow:hidden}
+    .gar-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .gar-card:hover .gar-img img{transform:scale(1.06)}
+    .gar-body{padding:24px}
+    .gar-body h3{font-size:17px;font-weight:700;margin-bottom:10px}
+    .gar-body p{font-size:13px;color:var(--ink-light);line-height:1.7}
+
+    .esempi{padding:0 0 96px;background:var(--beige)}
+    .esempi-inner{border-radius:16px;padding:64px}
+    .esempi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+    .es-item{background:#fff;border-radius:8px;padding:24px 20px;text-align:center;border:1px solid var(--border);transition:border-color .2s,box-shadow .2s}
+    .es-item:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(52,97,116,.1)}
+    .es-ico{width:48px;height:48px;background:var(--teal-xl);border-radius:10px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+    .es-ico svg{width:22px;height:22px;fill:none;stroke:var(--teal);stroke-width:2}
+    .es-item h3{font-size:14px;font-weight:700;margin-bottom:8px}
+    .es-item p{font-size:12px;color:var(--ink-light);line-height:1.6}
+
+    .numeri{padding:96px 0;background:var(--ink)}
+    .num-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+    .num-cell{background:rgba(255,255,255,.04);padding:36px 28px;text-align:center;border:1px solid rgba(255,255,255,.07)}
+    .num-cell:first-child{border-radius:10px 0 0 10px}
+    .num-cell:last-child{border-radius:0 10px 10px 0}
+    .num-n{font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.03em}
+    .num-n span{font-size:28px;color:var(--teal-l)}
+    .num-cell h3{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);margin:10px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+    .num-cell p{font-size:12px;color:rgba(255,255,255,.38);line-height:1.6}
+
+    .gallery-sec{padding:96px 0}
+    .gallery-sec h2{font-size:clamp(26px,3vw,40px);font-weight:700;letter-spacing:-.02em;margin-top:8px;margin-bottom:48px}
+
+    @media(max-width:1024px){
+      .intro-grid{grid-template-columns:1fr;gap:40px}
+      .intro-img{height:300px}
+      .gar-grid{grid-template-columns:1fr 1fr}
+      .esempi-grid{grid-template-columns:1fr 1fr}
+      .esempi-inner{padding:40px 28px}
+      .num-row{grid-template-columns:1fr 1fr}
+      .num-cell:first-child{border-radius:10px 0 0 0}
+      .num-cell:nth-child(2){border-radius:0 10px 0 0}
+      .num-cell:nth-child(3){border-radius:0 0 0 10px}
+      .num-cell:last-child{border-radius:0 0 10px 0}
+    }
+    @media(max-width:640px){
+      .gar-grid{grid-template-columns:1fr}
+      .esempi-grid{grid-template-columns:1fr 1fr}
+      .num-row{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+<header id="hdr" class="top">
+  <nav class="nav-bar wrap">
+    <a href="index.html" class="logo"><img src="https://static.wixstatic.com/media/efef1b_21c62e1af03a400bbca0f0aeb3972991~mv2.png" alt="GO Segnaletica"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li class="has-drop"><a href="#" class="active">Segnaletica ▾</a>
+        <ul class="drop">
+          <li><a href="segnaletica-orizzontale-aziendale.html" style="color:var(--teal);font-weight:700">Segnaletica Orizzontale Aziendale</a></li>
+          <li><a href="segnaletica-verticale.html">Segnaletica Verticale</a></li>
+        </ul>
+      </li>
+      <li class="has-drop"><a href="#">Altri Servizi ▾</a>
+        <ul class="drop">
+          <li><a href="tinteggiature-industriali.html">Tinteggiature Industriali</a></li>
+          <li><a href="pavimentazioni-in-resina.html">Pavimentazioni in Resina</a></li>
+          <li><a href="arredo-urbano.html">Arredo Urbano</a></li>
+          <li><a href="guard-rail.html">Guard Rail</a></li>
+          <li><a href="progettazione-personalizzata.html">Progettazione Personalizzata</a></li>
+        </ul>
+      </li>
+      <li><a href="realizzazioni.html">Realizzazioni</a></li>
+    </ul>
+    <div class="nav-cta-wrap"><a href="index.html#contatti" class="btn btn-primary">Contattaci</a></div>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mob" id="mob">
+    <a href="index.html">Home</a><a href="chi-siamo.html">Chi Siamo</a>
+    <div class="msub">
+      <a href="#" style="font-size:11px;letter-spacing:.08em;color:var(--ink-light);border-bottom:none;padding-top:16px">Segnaletica</a>
+      <a href="segnaletica-orizzontale-aziendale.html" style="color:var(--teal)">Segnaletica Orizzontale Aziendale</a>
+      <a href="segnaletica-verticale.html">Segnaletica Verticale</a>
+    </div>
+    <div class="msub">
+      <a href="#" style="font-size:11px;letter-spacing:.08em;color:var(--ink-light);border-bottom:none;padding-top:16px">Altri Servizi</a>
+      <a href="tinteggiature-industriali.html">Tinteggiature Industriali</a>
+      <a href="pavimentazioni-in-resina.html">Pavimentazioni in Resina</a>
+      <a href="arredo-urbano.html">Arredo Urbano</a>
+      <a href="guard-rail.html">Guard Rail</a>
+      <a href="progettazione-personalizzata.html">Progettazione Personalizzata</a>
+    </div>
+    <a href="realizzazioni.html">Realizzazioni</a>
+    <a href="index.html#contatti" class="btn btn-primary mob-btn">Contattaci</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://static.wixstatic.com/media/887d97_2fc59265a55c4b3aa3d5054d0a3d41b4~mv2.jpg/v1/fill/w_1800,h_900,al_c,q_85,enc_avif,quality_auto/realizzazione-segnaletica-orizzontale-aziendale.jpg" alt="Segnaletica orizzontale aziendale" loading="eager">
+  </div>
+  <div class="page-hero-inner wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Segnaletica</span><span>/</span><span style="color:rgba(255,255,255,.85)">Orizzontale Aziendale</span></div>
+    <h1>Segnaletica Orizzontale<br><em>Aziendale</em> Interna ed Esterna</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="fade">
+        <span class="label-tag">Specialisti dal 2013</span>
+        <h2>Soluzioni su misura per ambienti industriali e produttivi</h2>
+        <p>Progettiamo e realizziamo segnaletica orizzontale aziendale per capannoni, magazzini e stabilimenti in Lombardia e in tutta Italia. Le nostre soluzioni sono pensate per migliorare sicurezza e organizzazione degli spazi.</p>
+        <p>Ogni azienda ha esigenze specifiche: lavoriamo a stretto contatto con voi per garantire materiali di alta qualità, vasta gamma di personalizzazione e conformità normativa D.Lgs 81/08.</p>
+        <a href="index.html#contatti" class="btn btn-primary" style="margin-top:8px">
+          Richiedi sopralluogo gratuito
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="intro-img fade">
+        <img src="https://static.wixstatic.com/media/887d97_31b4f962000b4944ac96273f7755442f~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_avif,quality_auto/Segnaletica-orizzontale-aziendale-interna.jpg" alt="Segnaletica orizzontale aziendale interna" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANZIE -->
+<section class="garanzie">
+  <div class="wrap">
+    <div class="fade">
+      <span class="label-tag">Le nostre garanzie</span>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:700;letter-spacing:-.02em;margin-top:8px">Qualità e affidabilità su ogni cantiere</h2>
+    </div>
+    <div class="gar-grid">
+      <div class="gar-card fade">
+        <div class="gar-img"><img src="https://static.wixstatic.com/media/887d97_792c32267d96449e85467dec967c280f~mv2.jpg/v1/crop/x_0,y_444,w_1469,h_1469/fill/w_700,h_500,al_c,q_85,enc_avif,quality_auto/Percorso-pedonale-su-pavimento-aziendale.jpg" alt="Rispetto tempistiche" loading="lazy"></div>
+        <div class="gar-body">
+          <h3>Rispetto delle tempistiche</h3>
+          <p>Una volta concordato il lavoro, rispettiamo sempre le tempistiche. Grazie a più squadre operative disponibili, garantiamo rapidità senza attese.</p>
+        </div>
+      </div>
+      <div class="gar-card fade">
+        <div class="gar-img"><img src="https://static.wixstatic.com/media/887d97_854fc952b0474a6f9be5583b0386d2c8~mv2.jpg/v1/crop/x_512,y_1,w_1536,h_1535/fill/w_700,h_500,al_c,q_85,enc_avif,quality_auto/Segnaletica-percorso-pedonale-in-azienda.jpg" alt="Manutenzione e aggiornamento" loading="lazy"></div>
+        <div class="gar-body">
+          <h3>Manutenzione e Aggiornamento</h3>
+          <p>Offriamo servizi di manutenzione e aggiornamento della segnaletica aziendale, per mantenerla sempre efficace e conforme alle normative vigenti.</p>
+        </div>
+      </div>
+      <div class="gar-card fade">
+        <div class="gar-img"><img src="https://static.wixstatic.com/media/887d97_6be6b99beecd40fab8c7e0f1543a73c6~mv2.jpg/v1/crop/x_0,y_0,w_1933,h_1932/fill/w_700,h_500,al_c,q_85,enc_avif,quality_auto/manutenzione-segnaletica.jpg" alt="Materiali certificati" loading="lazy"></div>
+        <div class="gar-body">
+          <h3>Materiali per ogni esigenza</h3>
+          <p>Scegliamo i materiali in base alla pavimentazione esistente. Usiamo vernici epossidiche professionali e, se necessario, levigatura meccanica preventiva.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESEMPI -->
+<section class="esempi">
+  <div class="wrap">
+    <div class="esempi-inner fade">
+      <div style="text-align:center">
+        <span class="label-tag">Tipologie di segnaletica</span>
+        <h2 style="font-size:clamp(24px,2.5vw,36px);font-weight:700;letter-spacing:-.02em;margin-top:8px">Una vasta gamma di soluzioni</h2>
+        <p style="font-size:15px;color:var(--ink-light);margin-top:10px;max-width:500px;margin-left:auto;margin-right:auto">Dalla segnaletica di sicurezza obbligatoria per legge alle personalizzazioni su misura per il layout aziendale.</p>
+      </div>
+      <div class="esempi-grid">
+        <div class="es-item">
+          <div class="es-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>
+          <h3>Segnaletica di divieto</h3>
+          <p>Per specificare azioni vietate sul luogo di lavoro.</p>
+        </div>
+        <div class="es-item">
+          <div class="es-ico"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h3>Segnali di avvertimento</h3>
+          <p>Per informare il lavoratore della presenza di un pericolo imminente.</p>
+        </div>
+        <div class="es-item">
+          <div class="es-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg></div>
+          <h3>Segnali di emergenza</h3>
+          <p>Per segnalare vie di fuga e dispositivi di pronto soccorso.</p>
+        </div>
+        <div class="es-item">
+          <div class="es-ico"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <h3>Segnaletica antincendio</h3>
+          <p>Per individuare la posizione di estintori e altri presidi antincendio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMERI -->
+<section class="numeri">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:0" class="fade">
+      <span class="label-tag" style="color:var(--teal-l);background:rgba(74,128,153,.18)">I nostri numeri</span>
+      <h2 style="font-size:clamp(26px,3vw,40px);font-weight:700;color:#fff;letter-spacing:-.02em;margin-top:8px">Risultati concreti, ogni giorno</h2>
+    </div>
+    <div class="num-row fade">
+      <div class="num-cell"><div class="num-n">600<span>+</span></div><h3>Interventi/anno</h3><p>Segnaletica orizzontale aziendale e stradale in tutta Italia.</p></div>
+      <div class="num-cell"><div class="num-n">7<span></span></div><h3>Squadre operative</h3><p>Dal piccolo capannone alle grandi commesse, ogni giorno.</p></div>
+      <div class="num-cell"><div class="num-n">10<span>+</span></div><h3>Anni esperienza</h3><p>Aggiornamento costante su materiali e normative.</p></div>
+      <div class="num-cell"><div class="num-n">100<span>%</span></div><h3>Conformità</h3><p>Operativi in Lombardia e in tutta Italia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec">
+  <div class="wrap">
+    <div class="fade">
+      <span class="label-tag">Le nostre realizzazioni</span>
+      <h2>Alcuni lavori di segnaletica orizzontale aziendale</h2>
+    </div>
+    <div class="photo-grid fade">
+      <div class="pg-cell wide"><img src="https://static.wixstatic.com/media/887d97_bd1943c3aee84bff8bef63d69e9cb5a9~mv2.jpg/v1/fill/w_700,h_530,q_85,enc_avif,quality_auto/887d97_bd1943c3aee84bff8bef63d69e9cb5a9~mv2.jpg" alt="Percorso pedonale aziendale" loading="lazy"></div>
+      <div class="pg-cell"><img src="https://static.wixstatic.com/media/887d97_971752e4b86941718e51d5dde0412fb0~mv2.jpg/v1/fill/w_500,h_650,q_85,enc_avif,quality_auto/887d97_971752e4b86941718e51d5dde0412fb0~mv2.jpg" alt="Segnaletica aziendale" loading="lazy"></div>
+      <div class="pg-cell"><img src="https://static.wixstatic.com/media/887d97_b89b80d118284bd7b1cca76d6c78f32d~mv2.jpg/v1/fill/w_500,h_650,q_85,enc_avif,quality_auto/887d97_b89b80d118284bd7b1cca76d6c78f32d~mv2.jpg" alt="Segnaletica aziendale" loading="lazy"></div>
+      <div class="pg-cell wide"><img src="https://static.wixstatic.com/media/887d97_26aad19650c84fac92d3022aaf518b2b~mv2.jpg/v1/fill/w_700,h_530,q_85,enc_avif,quality_auto/887d97_26aad19650c84fac92d3022aaf518b2b~mv2.jpg" alt="Segnaletica pavimento" loading="lazy"></div>
+      <div class="pg-cell"><img src="https://static.wixstatic.com/media/887d97_7c32031063fa48bfa7ec37f1e45a3ce2~mv2.jpg/v1/fill/w_500,h_650,q_85,enc_avif,quality_auto/887d97_7c32031063fa48bfa7ec37f1e45a3ce2~mv2.jpg" alt="Sicurezza pedoni e carrelli" loading="lazy"></div>
+      <div class="pg-cell"><img src="https://static.wixstatic.com/media/887d97_b4eef0a1ab834d3ab84a9178bc35ba0b~mv2.jpg/v1/fill/w_500,h_650,q_85,enc_avif,quality_auto/887d97_b4eef0a1ab834d3ab84a9178bc35ba0b~mv2.jpg" alt="Cantiere segnaletica" loading="lazy"></div>
+      <div class="pg-cell wide"><img src="https://static.wixstatic.com/media/887d97_2a282c003c4d4ad2848ee12e92f0d67b~mv2.jpg/v1/fill/w_700,h_530,q_85,enc_avif,quality_auto/887d97_2a282c003c4d4ad2848ee12e92f0d67b~mv2.jpg" alt="Segnaletica orizzontale" loading="lazy"></div>
+      <div class="pg-cell"><img src="https://static.wixstatic.com/media/887d97_e8773acd1d194cf6a4d9a58d6cf234d4~mv2.jpg/v1/fill/w_500,h_650,q_85,enc_avif,quality_auto/887d97_e8773acd1d194cf6a4d9a58d6cf234d4~mv2.jpg" alt="Segnaletica aziendale" loading="lazy"></div>
+    </div>
+    <div style="text-align:center;margin-top:36px" class="fade">
+      <a href="realizzazioni.html" class="btn btn-ghost">Vedi tutte le realizzazioni <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="wrap">
+    <div class="cta-band fade">
+      <div class="cta-text"><h2>Cerchi segnaletica aziendale di qualità?</h2><p>Contattaci senza impegno. Sopralluogo gratuito, preventivo in 48h.</p></div>
+      <div class="cta-actions">
+        <a href="index.html#contatti" class="btn btn-white">Sopralluogo gratuito</a>
+        <a href="tel:+393716937088" class="btn btn-outline-white"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>371 693 7088</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><img src="https://static.wixstatic.com/media/efef1b_21c62e1af03a400bbca0f0aeb3972991~mv2.png" alt="GO Segnaletica"><p>Realizziamo segnaletica aziendale orizzontale e verticale per aziende, industrie ed enti pubblici in tutta Italia da oltre 10 anni.</p></div>
+      <div class="ft-col"><h4>Segnaletica</h4><ul><li><a href="segnaletica-orizzontale-aziendale.html">Orizzontale Aziendale</a></li><li><a href="segnaletica-verticale.html">Verticale</a></li></ul></div>
+      <div class="ft-col"><h4>Altri Servizi</h4><ul><li><a href="tinteggiature-industriali.html">Tinteggiature Industriali</a></li><li><a href="pavimentazioni-in-resina.html">Pavimentazioni in Resina</a></li><li><a href="arredo-urbano.html">Arredo Urbano</a></li><li><a href="guard-rail.html">Guard Rail</a></li></ul></div>
+      <div class="ft-col"><h4>Contatti</h4>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+393716937088">371 693 7088</a></div>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@segnaleticastudio.it">info@segnaleticastudio.it</a></div>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Bergamo, Italia</span></div>
+      </div>
+    </div>
+    <div class="ft-bottom"><p>© 2026 GO Segnaletica · P.IVA 04768070163</p><div class="ft-legal"><a href="https://www.iubenda.com/privacy-policy/74996838" target="_blank">Privacy Policy</a><a href="https://www.iubenda.com/privacy-policy/74996838/cookie-policy" target="_blank">Cookie Policy</a></div></div>
+  </div>
+</footer>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  function cs(){hdr.classList.toggle('scrolled',window.scrollY>60);hdr.classList.toggle('top',window.scrollY<=60)}
+  window.addEventListener('scroll',cs,{passive:true});cs();
+  const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+  burger.addEventListener('click',()=>{burger.classList.toggle('open');mob.classList.toggle('open')});
+  const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

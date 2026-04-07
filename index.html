@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GO Segnaletica | Segnaletica Aziendale Bergamo</title>
+  <meta name="description" content="Realizziamo segnaletica aziendale orizzontale e verticale per aziende, industrie ed enti pubblici in tutta Italia. Bergamo.">
+  <style>
+    :root {
+      --teal:       #346174;
+      --teal-d:     #234f62;
+      --teal-l:     #4a8099;
+      --teal-xl:    #ddedf2;
+      --beige:      #f6f1e9;
+      --beige-d:    #ede5d6;
+      --white:      #ffffff;
+      --offwhite:   #f9f8f6;
+      --ink:        #111314;
+      --ink-mid:    #3d4345;
+      --ink-light:  #6b7275;
+      --border:     #dde2e5;
+      --font:       Arial, Helvetica, sans-serif;
+      --ease:       cubic-bezier(.4,0,.2,1);
+      --r:          6px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);color:var(--ink);background:var(--white);overflow-x:hidden}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+    .label-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:var(--teal-xl);padding:5px 12px;border-radius:100px;margin-bottom:14px}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);font-family:var(--font);font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;border:2px solid transparent;transition:all .22s var(--ease)}
+    .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;transition:transform .22s}
+    .btn:hover svg{transform:translateX(3px)}
+    .btn-primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .btn-primary:hover{background:var(--teal-d);border-color:var(--teal-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(52,97,116,.28)}
+    .btn-ghost{background:transparent;color:var(--teal);border-color:var(--teal)}
+    .btn-ghost:hover{background:var(--teal);color:#fff;transform:translateY(-2px)}
+    .btn-white{background:#fff;color:var(--teal);border-color:#fff}
+    .btn-white:hover{background:var(--beige);transform:translateY(-2px)}
+    .btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+    .btn-outline-white:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+    /* HEADER */
+    header{position:fixed;inset:0 0 auto;z-index:999;transition:background .3s,box-shadow .3s}
+    header.scrolled{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.08)}
+    header.top{background:transparent}
+    nav.nav-bar{display:flex;align-items:center;justify-content:space-between;height:76px}
+    .logo img{height:46px;width:auto;object-fit:contain;transition:filter .3s}
+    header.top .logo img{filter:brightness(0) invert(1)}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links>li>a{display:block;padding:8px 14px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:var(--r);transition:color .2s,background .2s}
+    header.scrolled .nav-links>li>a{color:var(--ink)}
+    header.top .nav-links>li>a{color:rgba(255,255,255,.9)}
+    .nav-links>li>a:hover{background:rgba(52,97,116,.1);color:var(--teal)}
+    header.top .nav-links>li>a:hover{background:rgba(255,255,255,.15);color:#fff}
+    .has-drop{position:relative}
+    .has-drop:hover .drop{opacity:1;pointer-events:all;transform:translateY(0)}
+    .drop{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:0 12px 40px rgba(0,0,0,.1);min-width:250px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s}
+    .drop li a{display:block;padding:12px 18px;font-size:13px;color:var(--ink-mid);transition:background .15s,color .15s}
+    .drop li a:hover{background:var(--teal-xl);color:var(--teal)}
+    .nav-cta-wrap{margin-left:12px}
+    .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .burger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+    header.top .burger span{background:#fff}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mob{display:none;background:#fff;border-top:1px solid var(--border);padding:8px 0 24px}
+    .mob.open{display:block}
+    .mob a{display:block;padding:12px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);border-bottom:1px solid var(--offwhite)}
+    .mob a:hover{color:var(--teal);background:var(--beige)}
+    .mob .msub a{padding-left:44px;font-weight:400;text-transform:none;font-size:13px;color:var(--ink-light)}
+    .mob-btn{margin:16px 28px 0!important;display:block!important;text-align:center;border-radius:var(--r)!important}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(17,19,20,.75) 0%,rgba(52,97,116,.5) 60%,rgba(17,19,20,.25) 100%)}
+    .hero-inner{position:relative;z-index:1;width:100%;padding-top:140px;padding-bottom:100px}
+    .hero-content{max-width:680px}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:24px}
+    .hero-eyebrow span{width:6px;height:6px;background:#7dd4e8;border-radius:50%;flex-shrink:0}
+    .hero h1{font-size:clamp(38px,6vw,76px);font-weight:700;line-height:1.06;letter-spacing:-.02em;margin-bottom:22px}
+    .hero h1 em{font-style:normal;color:#7dd4e8}
+    .hero-sub{font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.75);line-height:1.7;max-width:520px;margin-bottom:36px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+    .hero-stats{display:inline-flex;border:1px solid rgba(255,255,255,.16);border-radius:var(--r);backdrop-filter:blur(12px);background:rgba(255,255,255,.06);overflow:hidden}
+    .hero-stat{padding:20px 36px;border-right:1px solid rgba(255,255,255,.12);text-align:center}
+    .hero-stat:last-child{border-right:none}
+    .hero-stat-n{font-size:32px;font-weight:700;line-height:1;color:#fff;letter-spacing:-.02em}
+    .hero-stat-l{font-size:10px;color:rgba(255,255,255,.55);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+    .scroll-cue{position:absolute;bottom:36px;right:48px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+    .scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.45),transparent);animation:sl 2s infinite}
+    @keyframes sl{0%,100%{opacity:1}50%{opacity:.3}}
+
+    /* TRUST */
+    .trust{background:var(--teal)}
+    .trust-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+    .trust-item{padding:26px 22px;display:flex;align-items:center;gap:14px;border-right:1px solid rgba(255,255,255,.15)}
+    .trust-item:last-child{border-right:none}
+    .trust-ico{width:42px;height:42px;background:rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .trust-ico svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .trust-text strong{display:block;font-size:14px;font-weight:700;color:#fff;line-height:1.2}
+    .trust-text span{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;display:block}
+
+    /* SERVICES */
+    .services{padding:112px 0;background:var(--white)}
+    .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+    .sec-head-left h2{font-size:clamp(28px,3vw,44px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-top:6px}
+    .sec-head-left p{font-size:15px;color:var(--ink-light);line-height:1.7;max-width:500px;margin-top:10px}
+    .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .srv-card{border-radius:10px;overflow:hidden;background:var(--offwhite);border:1px solid var(--border);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+    .srv-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(52,97,116,.14)}
+    .srv-img{height:230px;overflow:hidden;position:relative}
+    .srv-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
+    .srv-card:hover .srv-img img{transform:scale(1.07)}
+    .srv-tag{position:absolute;top:14px;left:14px;background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+    .srv-body{padding:26px 24px 28px}
+    .srv-body h3{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+    .srv-body p{font-size:13px;color:var(--ink-light);line-height:1.7;margin-bottom:20px}
+    .srv-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.07em;transition:gap .2s}
+    .srv-card:hover .srv-link{gap:10px}
+    .srv-link::after{content:'→'}
+
+    /* ALTRI */
+    .altri{padding:0 0 112px}
+    .altri-wrap{background:var(--beige);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+    .altri-img{position:relative;min-height:520px}
+    .altri-img img{width:100%;height:100%;object-fit:cover}
+    .altri-body{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
+    .altri-body h2{font-size:clamp(24px,2.5vw,38px);font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:16px}
+    .altri-body p{font-size:14px;color:var(--ink-mid);line-height:1.75;margin-bottom:32px}
+    .pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .pill{display:inline-block;padding:9px 18px;border:1.5px solid var(--teal);border-radius:100px;font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.04em;transition:background .2s,color .2s}
+    .pill:hover{background:var(--teal);color:#fff}
+
+    /* GALLERY */
+    .gallery{padding:0 0 112px;background:var(--white)}
+    .gallery-head{text-align:center;margin-bottom:48px}
+    .gallery-head h2{font-size:clamp(26px,3vw,42px);font-weight:700;letter-spacing:-.02em;margin-top:8px}
+    .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:12px}
+    .gal-cell{border-radius:8px;overflow:hidden;position:relative;background:var(--border)}
+    .gal-cell:first-child{grid-column:1/3;grid-row:1/3}
+    .gal-cell img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+    .gal-cell:hover img{transform:scale(1.06)}
+    .gal-label{position:absolute;bottom:0;left:0;right:0;padding:18px 16px 14px;background:linear-gradient(to top,rgba(17,19,20,.7),transparent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+    .gal-cell:hover .gal-label{opacity:1;transform:translateY(0)}
+    .gal-more{text-align:center;margin-top:36px}
+
+    /* STRENGTHS */
+    .strengths{padding:112px 0;background:var(--ink)}
+    .str-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center}
+    .str-left h2{font-size:clamp(28px,3vw,44px);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-top:8px}
+    .str-left p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;margin-top:14px}
+    .str-left .btn{margin-top:32px}
+    .str-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .str-item{background:rgba(255,255,255,.04);padding:36px 32px;border:1px solid rgba(255,255,255,.07);transition:background .25s}
+    .str-item:hover{background:rgba(255,255,255,.08)}
+    .str-item:nth-child(1){border-radius:10px 0 0 0}
+    .str-item:nth-child(2){border-radius:0 10px 0 0}
+    .str-item:nth-child(3){border-radius:0 0 0 10px}
+    .str-item:nth-child(4){border-radius:0 0 10px 0}
+    .str-n{font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.03em}
+    .str-n span{font-size:28px;color:var(--teal-l)}
+    .str-item h3{font-size:15px;font-weight:700;color:rgba(255,255,255,.85);margin:10px 0 8px}
+    .str-item p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.65}
+
+    /* CTA BAND */
+    .cta-wrap{padding:80px 0;background:var(--offwhite)}
+    .cta-band{background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 55%,var(--teal-l) 100%);border-radius:16px;padding:72px 64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;position:relative;overflow:hidden}
+    .cta-band::before{content:'';position:absolute;right:-80px;top:-80px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
+    .cta-text h2{font-size:clamp(24px,3vw,40px);font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+    .cta-text p{font-size:15px;color:rgba(255,255,255,.72)}
+    .cta-actions{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+
+    /* CONTACT */
+    .contact{padding:112px 0;background:var(--offwhite)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start}
+    .contact-info h2{font-size:clamp(26px,2.5vw,38px);font-weight:700;letter-spacing:-.02em;margin-top:8px;margin-bottom:16px}
+    .contact-info > p{font-size:14px;color:var(--ink-light);line-height:1.75;margin-bottom:36px}
+    .c-item{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+    .c-icon{width:44px;height:44px;background:var(--teal-xl);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .c-icon svg{width:20px;height:20px;fill:none;stroke:var(--teal);stroke-width:2}
+    .c-text{font-size:13px;color:var(--ink-light)}
+    .c-text strong{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}
+    .c-text a{color:var(--teal);font-weight:700}
+    .cform{background:#fff;border-radius:12px;padding:44px;box-shadow:0 8px 40px rgba(0,0,0,.06);border:1px solid var(--border)}
+    .cform h3{font-size:20px;font-weight:700;margin-bottom:28px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .fg{margin-bottom:16px}
+    .fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:6px}
+    .fg label .r{color:var(--teal)}
+    .fg input,.fg textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--font);font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s}
+    .fg input:focus,.fg textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(52,97,116,.1)}
+    .fg textarea{min-height:110px;resize:vertical}
+    .priv{display:flex;gap:10px;align-items:flex-start;margin-bottom:22px}
+    .priv input[type=checkbox]{margin-top:3px;accent-color:var(--teal);flex-shrink:0;width:16px;height:16px}
+    .priv label{font-size:12px;color:var(--ink-light);line-height:1.55}
+    .priv a{color:var(--teal);text-decoration:underline}
+    .fstatus{padding:13px 16px;border-radius:var(--r);font-size:13px;font-weight:700;margin-bottom:14px;display:none}
+    .fstatus.ok{background:#e8f5e9;color:#2e7d32;display:block}
+    .fstatus.err{background:#fdecea;color:#c62828;display:block}
+
+    /* FOOTER */
+    footer{background:#0d1214;color:#fff;padding:72px 0 0}
+    .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px}
+    .ft-brand img{height:42px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:16px}
+    .ft-brand p{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7}
+    .ft-col h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:18px}
+    .ft-col li{margin-bottom:10px}
+    .ft-col li a{font-size:13px;color:rgba(255,255,255,.58);transition:color .2s}
+    .ft-col li a:hover{color:#fff}
+    .ft-ci{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .ft-ci svg{width:15px;height:15px;fill:none;stroke:var(--teal-l);stroke-width:2;flex-shrink:0}
+    .ft-ci a,.ft-ci span{font-size:13px;color:rgba(255,255,255,.58);transition:color .2s}
+    .ft-ci a:hover{color:#fff}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding:22px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .ft-bottom p{font-size:12px;color:rgba(255,255,255,.27)}
+    .ft-bottom a{color:rgba(255,255,255,.4);transition:color .2s}
+    .ft-bottom a:hover{color:#fff}
+    .ft-legal{display:flex;gap:20px}
+
+    /* ANIMATE */
+    .fade{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+    .fade.in{opacity:1;transform:translateY(0)}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .nav-links,.nav-cta-wrap{display:none}
+      .burger{display:flex}
+      .trust-inner{grid-template-columns:1fr 1fr}
+      .trust-item:nth-child(2){border-right:none}
+      .trust-item{border-bottom:1px solid rgba(255,255,255,.12)}
+      .srv-grid{grid-template-columns:1fr 1fr}
+      .altri-wrap{grid-template-columns:1fr}
+      .altri-img{min-height:300px}
+      .gal-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:200px 200px}
+      .gal-cell:first-child{grid-column:1/2;grid-row:1/2}
+      .str-inner{grid-template-columns:1fr;gap:48px}
+      .cta-band{grid-template-columns:1fr;padding:52px 40px;text-align:center}
+      .cta-actions{flex-direction:row;justify-content:center}
+      .contact-grid{grid-template-columns:1fr;gap:40px}
+      .ft-grid{grid-template-columns:1fr 1fr;gap:40px}
+    }
+    @media(max-width:640px){
+      .hero-stats{flex-direction:column;width:100%}
+      .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.12)}
+      .hero-stat:last-child{border-bottom:none}
+      .trust-inner{grid-template-columns:1fr}
+      .trust-item{border-right:none}
+      .srv-grid{grid-template-columns:1fr}
+      .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px 160px}
+      .gal-cell:first-child{grid-column:1/3;grid-row:1/2}
+      .str-grid{grid-template-columns:1fr}
+      .str-item{border-radius:0!important}
+      .cta-band{border-radius:0;margin:0;padding:48px 24px}
+      .cta-actions{flex-direction:column}
+      .cform{padding:28px 18px}
+      .frow,.contact-grid{grid-template-columns:1fr}
+      .ft-grid{grid-template-columns:1fr;gap:32px}
+      .ft-bottom{flex-direction:column;text-align:center}
+      .scroll-cue{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr" class="top">
+  <nav class="nav-bar wrap">
+    <a href="/" class="logo">
+      <img src="https://static.wixstatic.com/media/efef1b_21c62e1af03a400bbca0f0aeb3972991~mv2.png" alt="GO Segnaletica">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/chi-siamo.html">Chi Siamo</a></li>
+      <li class="has-drop">
+        <a href="#">Segnaletica ▾</a>
+        <ul class="drop">
+          <li><a href="/segnaletica-orizzontale-aziendale.html">Segnaletica Orizzontale Aziendale</a></li>
+          <li><a href="/segnaletica-verticale.html">Segnaletica Verticale</a></li>
+          <li><a href="/segnaletica-orizzontale.html">Segnaletica Orizzontale Stradale</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="#">Altri Servizi ▾</a>
+        <ul class="drop">
+          <li><a href="/tinteggiature-industriali.html">Tinteggiature Industriali</a></li>
+          <li><a href="/pavimentazioni-in-resina.html">Pavimentazioni in Resina</a></li>
+          <li><a href="/arredo-urbano.html">Arredo Urbano</a></li>
+          <li><a href="/guard-rail.html">Guard Rail</a></li>
+          <li><a href="/progettazione-personalizzata.html">Progettazione Personalizzata</a></li>
+        </ul>
+      </li>
+      <li><a href="/realizzazioni.html">Realizzazioni</a></li>
+    </ul>
+    <div class="nav-cta-wrap"><a href="#contatti" class="btn btn-primary">Contattaci</a></div>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mob" id="mob">
+    <a href="/">Home</a>
+    <a href="/chi-siamo.html">Chi Siamo</a>
+    <div class="msub">
+      <a href="#" style="font-size:11px;letter-spacing:.08em;color:var(--ink-light);border-bottom:none;padding-top:16px">Segnaletica</a>
+      <a href="/segnaletica-orizzontale-aziendale.html">Segnaletica Orizzontale Aziendale</a>
+      <a href="/segnaletica-verticale.html">Segnaletica Verticale</a>
+    </div>
+    <div class="msub">
+      <a href="#" style="font-size:11px;letter-spacing:.08em;color:var(--ink-light);border-bottom:none;padding-top:16px">Altri Servizi</a>
+      <a href="/tinteggiature-industriali.html">Tinteggiature Industriali</a>
+      <a href="/pavimentazioni-in-resina.html">Pavimentazioni in Resina</a>
+      <a href="/arredo-urbano.html">Arredo Urbano</a>
+      <a href="/guard-rail.html">Guard Rail</a>
+      <a href="/progettazione-personalizzata.html">Progettazione Personalizzata</a>
+    </div>
+    <a href="/realizzazioni.html">Realizzazioni</a>
+    <a href="#contatti" class="btn btn-primary mob-btn">Contattaci</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img
+      src="https://static.wixstatic.com/media/887d97_a61f0f7ad4884eb4a0a8a9442ccc37d6~mv2.jpg/v1/fill/w_1800,h_1200,al_c,q_85,enc_avif,quality_auto/segnaletica-pavimento-azienda-bergamo_edited.jpg"
+      alt="Segnaletica pavimento aziendale"
+      loading="eager"
+    >
+  </div>
+  <div class="hero-inner wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span>Bergamo · Tutta Italia · Dal 2013</div>
+      <h1>Segnaletica<br><em>Aziendale</em><br>su misura</h1>
+      <p class="hero-sub">Realizziamo segnaletica orizzontale e verticale per aziende, industrie ed enti pubblici. Certificati, rapidi, senza fermare la produzione.</p>
+      <div class="hero-actions">
+        <a href="#contatti" class="btn btn-white">
+          Sopralluogo gratuito
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+393716937088" class="btn btn-outline-white">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          371 693 7088
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">500+</div><div class="hero-stat-l">Interventi/anno</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">10+</div><div class="hero-stat-l">Anni esperienza</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">6</div><div class="hero-stat-l">Squadre operative</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll<div class="scroll-line"></div></div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="trust-text"><strong>Materiali certificati</strong><span>Conformità normativa garantita</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="trust-text"><strong>Tempi rapidi</strong><span>Senza fermare la produzione</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg></div>
+        <div class="trust-text"><strong>Weekend e notturno</strong><span>Massima flessibilità operativa</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="trust-text"><strong>6 squadre attive</strong><span>In tutta Italia contemporaneamente</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVIZI -->
+<section class="services" id="servizi">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <div class="sec-head-left">
+        <span class="label-tag">I nostri servizi</span>
+        <h2>Segnaletica professionale<br>per ogni esigenza</h2>
+        <p>Soluzioni certificate per aziende, industrie, enti pubblici e spazi urbani in tutta Italia.</p>
+      </div>
+      <a href="/realizzazioni.html" class="btn btn-ghost">Vedi le realizzazioni <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card fade">
+        <div class="srv-img">
+          <img src="https://static.wixstatic.com/media/887d97_9f2c728a6b9e42639e20c3484d615dbd~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/strisce-segnaletica-orizzontale-aziendale.jpg" alt="Segnaletica Orizzontale Aziendale" loading="lazy">
+          <span class="srv-tag">Orizzontale</span>
+        </div>
+        <div class="srv-body">
+          <h3>Segnaletica Orizzontale Aziendale</h3>
+          <p>Capannoni, magazzini, stabilimenti. Materiali certificati, tempi rapidi senza bloccare la produzione.</p>
+          <a href="/segnaletica-orizzontale-aziendale.html" class="srv-link">Scopri di più</a>
+        </div>
+      </div>
+      <div class="srv-card fade">
+        <div class="srv-img">
+          <img src="https://static.wixstatic.com/media/887d97_108de5543392433b91303f07f6f37657~mv2.jpg/v1/crop/x_0,y_0,w_4080,h_2721/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/segnaletica-verticale-fine-pista-ciclabile.jpg" alt="Segnaletica Verticale" loading="lazy">
+          <span class="srv-tag">Verticale</span>
+        </div>
+        <div class="srv-body">
+          <h3>Segnaletica Verticale</h3>
+          <p>Strade, parcheggi, spazi aziendali. Operatori certificati, materiali ad alta visibilità.</p>
+          <a href="/segnaletica-verticale.html" class="srv-link">Scopri di più</a>
+        </div>
+      </div>
+      <div class="srv-card fade">
+        <div class="srv-img">
+          <img src="https://static.wixstatic.com/media/887d97_bd1943c3aee84bff8bef63d69e9cb5a9~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/887d97_bd1943c3aee84bff8bef63d69e9cb5a9~mv2.jpg" alt="Percorsi pedonali e sicurezza" loading="lazy">
+          <span class="srv-tag">Sicurezza</span>
+        </div>
+        <div class="srv-body">
+          <h3>Percorsi Pedonali e Sicurezza</h3>
+          <p>Percorsi pedonali, zone pericolo, aree di sicurezza conformi al D.Lgs 81/08.</p>
+          <a href="/segnaletica-orizzontale-aziendale.html" class="srv-link">Scopri di più</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALTRI SERVIZI -->
+<section class="altri">
+  <div class="wrap">
+    <div class="altri-wrap fade">
+      <div class="altri-img">
+        <img src="https://static.wixstatic.com/media/efef1b_f55956fbe21a40e89c280d30b67848a9~mv2.jpg/v1/fill/w_1000,h_800,al_c,q_85,enc_avif,quality_auto/segnaletica-pavimento-azienda-bergamo.jpg" alt="Servizi GO Segnaletica" loading="lazy">
+      </div>
+      <div class="altri-body">
+        <span class="label-tag">Scopri tutto</span>
+        <h2>Non solo segnaletica: soluzioni complete per i tuoi spazi</h2>
+        <p>Oltre alla segnaletica orizzontale e verticale, offriamo una gamma completa di servizi per aziende, enti pubblici e spazi urbani. Materiali certificati, squadre specializzate, tempi garantiti.</p>
+        <div class="pills">
+          <a href="/tinteggiature-industriali.html" class="pill">Tinteggiature Industriali</a>
+          <a href="/pavimentazioni-in-resina.html" class="pill">Pavimentazioni in Resina</a>
+          <a href="/arredo-urbano.html" class="pill">Arredo Urbano</a>
+          <a href="/guard-rail.html" class="pill">Guard Rail</a>
+          <a href="/progettazione-personalizzata.html" class="pill">Progettazione Personalizzata</a>
+        </div>
+        <a href="#contatti" class="btn btn-primary">Richiedi un preventivo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="gallery-head fade">
+      <span class="label-tag">Le nostre realizzazioni</span>
+      <h2>Oltre 500 interventi ogni anno in tutta Italia</h2>
+    </div>
+    <div class="gal-grid fade">
+      <div class="gal-cell">
+        <img src="https://static.wixstatic.com/media/887d97_bb58f2f6775d41c2a703c58af60d3a0f~mv2.jpg/v1/fill/w_1000,h_750,q_85,enc_avif,quality_auto/887d97_bb58f2f6775d41c2a703c58af60d3a0f~mv2.jpg" alt="Segnaletica aziendale" loading="lazy">
+        <div class="gal-label">Segnaletica Aziendale</div>
+      </div>
+      <div class="gal-cell">
+        <img src="https://static.wixstatic.com/media/887d97_aecb0209d544480ea7a629488f88d6a1~mv2.jpg/v1/fill/w_600,h_450,q_85,enc_avif,quality_auto/887d97_aecb0209d544480ea7a629488f88d6a1~mv2.jpg" alt="Bande rumorose" loading="lazy">
+        <div class="gal-label">Bande Rumorose</div>
+      </div>
+      <div class="gal-cell">
+        <img src="https://static.wixstatic.com/media/887d97_8bcd881ff8d0430691cac133ab1ed3f4~mv2.jpg/v1/fill/w_600,h_450,q_85,enc_avif,quality_auto/887d97_8bcd881ff8d0430691cac133ab1ed3f4~mv2.jpg" alt="Separatori di corsia" loading="lazy">
+        <div class="gal-label">Separatori di Corsia</div>
+      </div>
+      <div class="gal-cell">
+        <img src="https://static.wixstatic.com/media/887d97_5293a06fdf2e4708883cdc3ec22da260~mv2.jpg/v1/fill/w_600,h_450,q_85,enc_avif,quality_auto/887d97_5293a06fdf2e4708883cdc3ec22da260~mv2.jpg" alt="Segnaletica su asfalto" loading="lazy">
+        <div class="gal-label">Segnaletica Stradale</div>
+      </div>
+      <div class="gal-cell">
+        <img src="https://static.wixstatic.com/media/efef1b_db159b01763b4c0eb9a06b456e553f88~mv2.jpg/v1/fill/w_600,h_600,q_85,enc_avif,quality_auto/efef1b_db159b01763b4c0eb9a06b456e553f88~mv2.jpg" alt="Stesura vernice" loading="lazy">
+        <div class="gal-label">Pavimentazioni</div>
+      </div>
+    </div>
+    <div class="gal-more fade">
+      <a href="/realizzazioni.html" class="btn btn-ghost">Vedi tutte le realizzazioni <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strengths">
+  <div class="wrap">
+    <div class="str-inner">
+      <div class="str-left fade">
+        <span class="label-tag" style="color:var(--teal-l);background:rgba(74,128,153,.18)">Perché sceglierci</span>
+        <h2>I nostri Punti di Forza</h2>
+        <p>Oltre un decennio di esperienza sul campo, squadre certificate e la flessibilità di chi sa che le aziende non possono permettersi fermi produzione.</p>
+        <a href="#contatti" class="btn btn-primary">Parlaci del tuo progetto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="str-grid fade">
+        <div class="str-item">
+          <div class="str-n">6<span>+</span></div>
+          <h3>Squadre operative</h3>
+          <p>Lavoriamo in parallelo su cantieri diversi in tutta Italia, gestendo oltre 500 interventi all'anno.</p>
+        </div>
+        <div class="str-item">
+          <div class="str-n">10<span>+</span></div>
+          <h3>Anni di esperienza</h3>
+          <p>Operiamo da oltre un decennio nella segnaletica per aziende, industrie ed enti pubblici lombardi.</p>
+        </div>
+        <div class="str-item">
+          <div class="str-n">24<span>/7</span></div>
+          <h3>Flessibilità totale</h3>
+          <p>Disponibili di notte, nel weekend e nei periodi di fermo impianti per non ostacolare mai la tua attività.</p>
+        </div>
+        <div class="str-item">
+          <div class="str-n">100<span>%</span></div>
+          <h3>Conformità garantita</h3>
+          <p>Materiali certificati, installazioni a norma. Zero rischi di sanzione per la tua azienda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-wrap">
+  <div class="wrap">
+    <div class="cta-band fade">
+      <div class="cta-text">
+        <h2>Cerchi segnaletica di qualità?</h2>
+        <p>Contattaci senza impegno. Sopralluogo gratuito, preventivo in 48h, nessun vincolo.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contatti" class="btn btn-white">Sopralluogo gratuito</a>
+        <a href="tel:+393716937088" class="btn btn-outline-white">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          371 693 7088
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTATTI -->
+<section class="contact" id="contatti">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info fade">
+        <span class="label-tag">Parliamo del tuo progetto</span>
+        <h2>Contattaci per un sopralluogo gratuito</h2>
+        <p>Spiegaci le tue esigenze. Siamo pronti a offrirti la soluzione più adatta per migliorare la sicurezza e l'organizzazione dei tuoi spazi.</p>
+        <div class="c-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="c-text"><strong>Telefono</strong><a href="tel:+393716937088">371 693 7088</a></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="c-text"><strong>Email</strong><a href="mailto:info@segnaleticastudio.it">info@segnaleticastudio.it</a></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="c-text"><strong>Sede</strong><span>Bergamo — interventi in tutta Italia</span></div>
+        </div>
+      </div>
+      <div class="cform fade">
+        <h3>Richiedi un sopralluogo gratuito</h3>
+        <div id="fst" class="fstatus"></div>
+        <div class="frow">
+          <div class="fg"><label>Nome <span class="r">*</span></label><input type="text" id="nome" placeholder="Mario Rossi" required></div>
+          <div class="fg"><label>Azienda <span class="r">*</span></label><input type="text" id="azienda" placeholder="Nome azienda" required></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Email <span class="r">*</span></label><input type="email" id="email" placeholder="mario@azienda.it" required></div>
+          <div class="fg"><label>Telefono <span class="r">*</span></label><input type="tel" id="tel" placeholder="+39 333 000 0000" required></div>
+        </div>
+        <div class="fg"><label>Messaggio</label><textarea id="msg" placeholder="Descrivici il tuo progetto o le tue esigenze..."></textarea></div>
+        <div class="priv">
+          <input type="checkbox" id="priv">
+          <label for="priv">Dichiaro di aver letto l'<a href="https://www.iubenda.com/privacy-policy/74996838" target="_blank">informativa privacy</a> e accetto il trattamento dei dati personali. <span class="r">*</span></label>
+        </div>
+        <button class="btn btn-primary" id="sbtn" onclick="doSend()" style="width:100%;justify-content:center">
+          Invia richiesta <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <img src="https://static.wixstatic.com/media/efef1b_21c62e1af03a400bbca0f0aeb3972991~mv2.png" alt="GO Segnaletica">
+        <p>Realizziamo segnaletica aziendale orizzontale e verticale per aziende, industrie ed enti pubblici in tutta Italia da oltre 10 anni.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Segnaletica</h4>
+        <ul>
+          <li><a href="/segnaletica-orizzontale-aziendale.html">Orizzontale Aziendale</a></li>
+          <li><a href="/segnaletica-verticale.html">Verticale</a></li>
+          <li><a href="/segnaletica-orizzontale.html">Orizzontale Stradale</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Altri Servizi</h4>
+        <ul>
+          <li><a href="/tinteggiature-industriali.html">Tinteggiature Industriali</a></li>
+          <li><a href="/pavimentazioni-in-resina.html">Pavimentazioni in Resina</a></li>
+          <li><a href="/arredo-urbano.html">Arredo Urbano</a></li>
+          <li><a href="/guard-rail.html">Guard Rail</a></li>
+          <li><a href="/progettazione-personalizzata.html">Progettazione Personalizzata</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contatti</h4>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.4 2.83 2 2 0 012.38.82H5.4a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0013 15.84l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+393716937088">371 693 7088</a></div>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@segnaleticastudio.it">info@segnaleticastudio.it</a></div>
+        <div class="ft-ci"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Bergamo, Italia</span></div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 GO Segnaletica · P.IVA 04768070163</p>
+      <div class="ft-legal"><a href="https://www.iubenda.com/privacy-policy/74996838" target="_blank">Privacy Policy</a><a href="https://www.iubenda.com/privacy-policy/74996838/cookie-policy" target="_blank">Cookie Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll behavior
+  const hdr = document.getElementById('hdr');
+  function checkScroll(){ hdr.classList.toggle('scrolled', window.scrollY > 60); hdr.classList.toggle('top', window.scrollY <= 60); }
+  window.addEventListener('scroll', checkScroll, {passive:true});
+  checkScroll();
+
+  // Hamburger
+  const burger = document.getElementById('burger');
+  const mob = document.getElementById('mob');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); mob.classList.toggle('open'); });
+  mob.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mob.classList.remove('open'); }));
+
+  // Fade on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Form
+  async function doSend(){
+    const st = document.getElementById('fst'), btn = document.getElementById('sbtn');
+    const nome = document.getElementById('nome').value.trim();
+    const azienda = document.getElementById('azienda').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const tel = document.getElementById('tel').value.trim();
+    const priv = document.getElementById('priv').checked;
+    if(!nome||!azienda||!email||!tel){ st.className='fstatus err'; st.textContent='Compila tutti i campi obbligatori.'; return; }
+    if(!priv){ st.className='fstatus err'; st.textContent='Accetta la privacy policy per procedere.'; return; }
+    btn.disabled=true; btn.textContent='Invio in corso...';
+    try {
+      // ⚠️ Sostituire YOUR_FORMSPREE_ID con l'ID ottenuto da formspree.io
+      const r = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({nome,azienda,email,tel,messaggio:document.getElementById('msg').value.trim()})
+      });
+      if(r.ok){ st.className='fstatus ok'; st.textContent='✓ Messaggio inviato! Ti ricontatteremo presto.'; ['nome','azienda','email','tel','msg'].forEach(id=>document.getElementById(id).value=''); document.getElementById('priv').checked=false; }
+      else throw new Error();
+    } catch { st.className='fstatus err'; st.textContent='Errore. Scrivici direttamente a info@segnaleticastudio.it'; }
+    btn.disabled=false; btn.innerHTML='Invia richiesta <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  }
+
+  // GTM — inserire qui il codice quando disponibile
+  // window.dataLayer = window.dataLayer || [];
+</script>
+</body>
+</html>
