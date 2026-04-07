@@ -120,8 +120,8 @@ footer{background:#0d1214;color:#fff;padding:72px 0 0}
 .ft-legal{display:flex;gap:20px}
 
 /* ANIMATE */
-.fade{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
-.fade.in{opacity:1;transform:translateY(0)}
+.fade{transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.fade.in{}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
