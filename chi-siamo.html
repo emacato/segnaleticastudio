@@ -85,8 +85,8 @@
     .page-hero-bg{position:absolute;inset:0}
     .page-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(17,19,20,.78) 0%,rgba(52,97,116,.5) 70%,transparent 100%)}
     .page-hero-inner{position:relative;z-index:1;padding-bottom:64px;width:100%}
-    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.55);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em}
-    .breadcrumb a{color:rgba(255,255,255,.55);transition:color .2s}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.85);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+    .breadcrumb a{color:rgba(255,255,255,.85);transition:color .2s}
     .breadcrumb a:hover{color:#fff}
     .breadcrumb span{color:rgba(255,255,255,.3)}
     .page-hero h1{font-size:clamp(34px,5vw,62px);font-weight:700;line-height:1.1;letter-spacing:-.02em;max-width:700px}
@@ -574,9 +574,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const hdr = document.getElementById('hdr');
-  function checkScroll(){ hdr.classList.toggle('scrolled', window.scrollY > 1); hdr.classList.toggle('top', window.scrollY <= 1); }
-  window.addEventListener('scroll', checkScroll, {passive:true});
-  checkScroll();
+  // Navbar: trasparente solo quando hero è visibile, bianca subito dopo
+  const heroEl = document.querySelector('.hero, .page-hero, .contact-hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    const navObs = new IntersectionObserver(([e]) => {
+      hdr.classList.toggle('scrolled', !e.isIntersecting);
+      hdr.classList.toggle('top', e.isIntersecting);
+    }, {threshold: 0.1});
+    navObs.observe(heroEl);
+  } else {
+    hdr.classList.add('scrolled'); hdr.classList.remove('top');
+  }
 
   const burger = document.getElementById('burger');
   const mob = document.getElementById('mob');
