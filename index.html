@@ -652,7 +652,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const navObs = new IntersectionObserver(([e]) => {
       hdr.classList.toggle('scrolled', !e.isIntersecting);
       hdr.classList.toggle('top', e.isIntersecting);
-    }, {threshold: 0.1});
+    }, {threshold: 0, rootMargin: "0px 0px -95% 0px"});
     navObs.observe(heroEl);
   } else {
     hdr.classList.add('scrolled'); hdr.classList.remove('top');
